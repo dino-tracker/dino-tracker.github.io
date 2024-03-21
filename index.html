@@ -1,0 +1,654 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0045)http://6.869.csail.mit.edu/fa19/schedule.html -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<link href="https://fonts.cdnfonts.com/css/chalkduster" rel="stylesheet">
+<style>
+    @import url('https://fonts.cdnfonts.com/css/chalkduster');
+</style>
+<script src="./sm/assets/teaser-data.js"></script>
+
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>DINO-Tracker: Taming DINO for Self-Supervised Point Tracking in a Single Video</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <meta name="description"
+        content="Project page for &#39;DINO-Tracker: Taming DINO for Self-Supervised Point Tracking in a Single Video.&#39;">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="./assets/icons/css/academicons.min.css">
+    <link rel="stylesheet" href="./assets/icons/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script defer src="./assets/icons/js/fontawesome.all.min.js"></script>
+    <link rel="shortcut icon" href="https://www.weizmann.ac.il/pages/sites/all/images/favicon.svg">
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>DINO-Tracker: Taming DINO for Self-Supervised Point Tracking in a Single Video</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <meta name="description"
+        content="Project page for &#39;DINO-Tracker: Taming DINO for Self-Supervised Point Tracking in a Single Video.&#39;">
+
+    <!--    mathjax -->
+    <script type="text/x-mathjax-config"> MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</head>
+
+<body>
+    <p class="title" style="margin-bottom: 10px;">DINO-Tracker: Taming DINO for Self-Supervised Point Tracking in a Single Video</p>
+
+    <p class="author">
+        <span class="author"><a target="_blank" href="https://www.linkedin.com/in/narek-tumanyan-5a3334122/">Narek
+                Tumanyan</a>&nbsp;<sup>*</sup></span>
+        <span class="author"><a target="_blank" href="https://www.linkedin.com/in/assaf-singer/">Assaf
+                Singer&nbsp;</a><sup>*</sup></span>
+        <span class="author"><a target="_blank" href="https://www.weizmann.ac.il/math/bagon/home">Shai
+                Bagon</a>&nbsp;<sup>&nbsp;</sup></span>
+        <span class="author"><a target="_blank" href="https://www.weizmann.ac.il/math/dekel/">Tali
+                Dekel</a>&nbsp;<sup>&nbsp;</sup></span>
+    </p>
+
+    <table border="0" align="center" class="affiliations" width="1200px" style="margin-top: 15px; margin-bottom: 15px;">
+        <tbody align="center">
+            <tr>
+                <td style="text-align: center; width:20%; ">&nbsp;<sup>&nbsp;</sup>&nbsp;<a class="custom-link" target="_blank"
+                        href="https://www.weizmann.ac.il/pages/"><img src="./sm/assets/wis_logo.png" height="65" alt=""></a></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="row" style="align-items: center;">
+        <div style="margin: auto; margin-bottom: 15px; font-size: 0.9rem"><i>*indicates equal contribution</i></div>
+    </div>
+
+
+    <div class="row">
+        <div style="margin: auto; margin-bottom: 15px">
+            <a class="custom-link" href="./assets/dino_tracker.pdf" target="_blank">
+                <button type="button" class="btn btn-dark badge-button"><i class="bi bi-file-earmark-pdf-fill"></i> Paper</button>
+            </a>
+
+            <a><button type="button" class="btn btn-dark badge-button"><i class="ai ai-arxiv"></i> Arxiv</button></a>
+
+            <a disabled><button type="button" class="btn btn-secondary badge-button"><i class="fab fa-github"></i> Code (coming soon)</button></a>
+            
+            <a class="custom-link" href="./sm/index.html" target="_blank"><button type="button" class="btn btn-dark badge-button"><i class="bi bi-archive-fill"></i> Supplementary Material</button></a>
+        </div>
+
+        
+    </div>
+
+    <div class="container" style="max-width: none; width: 1300px">
+        <table width="1000" border="0" align="center" style="margin: 0px">
+            <tbody>
+                <tr>
+                    <div id="teaser-carousel" class="carousel slide teaser-carousel" data-interval="false">
+                        <ol class="carousel-indicators" style="margin-bottom: 0px;">
+                            <li data-target="#teaser-carousel" data-slide-to="0" class="active"></li>
+                            <li data-target="#teaser-carousel" data-slide-to="1"></li>
+                            <li data-target="#teaser-carousel" data-slide-to="2"></li>
+                        </ol>
+
+                        <div class="carousel-inner">
+
+                            <div class="carousel-item active">
+                              <div>
+                                <video class="img-fluid trail-vid" autoplay loop muted playsinline controls>
+                                    <source src="./sm/assets/rainbow-trails/kangaroo-2.mp4" type="video/mp4">
+                                </video>
+              
+                                <video class="img-fluid trail-vid" autoplay loop muted playsinline controls>
+                                    <source src="./sm/assets/rainbow-trails/tiger-2.mp4" type="video/mp4">
+                                </video>
+              
+                                <br />
+              
+                                <video class="img-fluid trail-vid" autoplay loop muted playsinline controls>
+                                    <source src="./sm/assets/rainbow-trails/swing.mp4" type="video/mp4">
+                                </video>
+              
+                                <video class="img-fluid trail-vid" autoplay loop muted playsinline controls>
+                                    <source src="./sm/assets/rainbow-trails/motorbike.mp4" type="video/mp4">
+                                </video>
+                              </div>
+                            </div>
+                            
+              
+                            <div class="carousel-item">
+              
+                              <video class="img-fluid trail-vid" autoplay loop muted playsinline controls>
+                                  <source src="./sm/assets/rainbow-trails/flamingo.mp4" type="video/mp4">
+                              </video>
+              
+                              <video class="img-fluid trail-vid" autoplay loop muted playsinline controls>
+                                  
+                                  <source src="./sm/assets/rainbow-trails/kangaroo-1.mp4" type="video/mp4">
+                              </video>
+              
+                              <br />
+              
+                              <video class="img-fluid trail-vid" autoplay loop muted playsinline controls>
+                                  <source src="./sm/assets/rainbow-trails/horse-jump-2.mp4" type="video/mp4">
+                              </video>
+              
+                              <video class="img-fluid trail-vid" autoplay loop muted playsinline controls>
+                                <source src="./sm/assets/rainbow-trails/tennis.mp4" type="video/mp4">
+                              </video>
+              
+                            </div>
+              
+              
+              
+                            <div class="carousel-item">
+              
+                              <video class="img-fluid trail-vid" autoplay loop muted playsinline controls>
+                                  <source src="./sm/assets/rainbow-trails/soapbox.mp4" type="video/mp4">
+                              </video>
+              
+                              <video class="img-fluid trail-vid" autoplay loop muted playsinline controls>
+                                  <source src="./sm/assets/rainbow-trails/car.mp4" type="video/mp4">
+                              </video>
+              
+                              <br />
+              
+                              <video class="img-fluid trail-vid" autoplay loop muted playsinline controls>
+                                  <source src="./sm/assets/rainbow-trails/hike.mp4" type="video/mp4">
+                              </video>
+              
+                              <video class="img-fluid trail-vid" autoplay loop muted playsinline controls>
+                                  <source src="./sm/assets/rainbow-trails/car-turn.mp4" type="video/mp4">
+                              </video>
+              
+                            </div>
+              
+                        </div>
+                        <a class="carousel-control-prev teaser-carousel-control" href="#teaser-carousel" role="button" data-slide="prev" style="width: fit-content;">
+                            <div class="slider-navigation-previous">
+                                <svg viewBox="0 0 50 80" xml:space="preserve">
+                                    <polyline fill="white" stroke-width=".5em" stroke-linecap="round"
+                                        stroke-linejoin="round" points="45.63,75.8 0.375,38.087 45.63,0.375 ">
+                                    </polyline>
+                                </svg>
+                            </div>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next teaser-carousel-control" href="#teaser-carousel" role="button" data-slide="next" style="width: fit-content;">
+                            <div class="slider-navigation-next">
+                                <svg viewBox="0 0 50 80" xml:space="preserve">
+                                    <polyline fill="white" stroke-width=".5em" stroke-linecap="round"
+                                        stroke-linejoin="round" points="0.375,0.375 45.63,38.087 0.375,75.8 ">
+                                    </polyline>
+                                </svg>
+                            </div>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </tr>
+                <tr> <br /> </tr> 
+                <!-- <tr>
+                    <td style="text-align: left; width: 17%"><i>*Equal contribution.</i></td>
+                </tr> -->
+                <tr align="center"></tr>
+            </tbody>
+        </table>
+
+        &nbsp;
+
+        <p><span class="section"><b>Abstract</b></span> </p>
+        <p> We present DINO-Tracker -- a new framework for long-term dense tracking in video. The pillar of our approach is combining test-time training on a single video,
+            with the powerful localized semantic features learned by a pre-trained DINO-ViT model. Specifically, our framework simultaneously adopts DINO's features to fit to the motion observations of
+            the test video, while training a tracker that directly leverages the refined features. The entire framework is trained end-to-end using a combination of self-supervised losses,
+            and regularization that allows us to retain and benefit from DINO's semantic prior. Extensive evaluation demonstrates that our method achieves state-of-the-art results on known benchmarks.
+            DINO-tracker significantly outperforms self-supervised methods and is competitive with state-of-the-art supervised trackers, while outperforming them in challenging cases of tracking under long-term occlusions.
+        
+
+        <!--------------------------------- Method --------------------------------->
+
+        <p class="section">&nbsp;</p>
+        
+        <p class="section"><b>Method</b></p>
+        <p class="section">&nbsp;</p>
+        <div class="method-container">
+            <div class="pipeline-container"> <img src="./assets/pipeline.png" class="pipeline-img" /> </div>
+            <br />
+            <p>
+                Our tracker is trained on a <i>single</i> input video.
+                The core of our method is harnessing a pre-trained DINOv2-ViT model
+                <a href="#ref-paper-6">[6]</a>, which provides our framework
+                with an initial semantic and localized representation.
+                Moreover, using raw DINO feature matching can serve as a strong baseline for tracking (see Tab. 1 and Sec. 4.1 in the paper).
+                However, they lack temporal consistency and fine-grained localization required for accurate long-term tracking.
+                To this end, we train Delta-DINO -- a feature extractor
+                that predicts a residual to the pre-trained DINO features.
+                Our framework simultaneously refines DINO's features to fit to the motion observations of the test video,
+                while training a tracker that directly leverages the refined features.
+
+                Following the prevailing approach, we extract features,
+                for both the query $\mathbf{x_q}$  and a target frame $\mathbf{I}^t$,
+                and estimate the final position $\hat{\mathbf{x}}^t$ in a target frame $\mathbf{I}^k$ based on the maximal location
+                in the cost volume.
+
+                DINO prior provides our framework robust correspondences across distant frames,
+                achieving SOTA performance in tarcking through long-term occlusions.
+
+            </p>
+        </div>
+
+
+
+        <!--------------------------------- TAP-Vid-DAVIS comparisons --------------------------------->
+
+        <p class="section">&nbsp;</p>
+        
+        <p class="section"><b>TAP-Vid-DAVIS Comparisons</b></p>
+        <!-- <p class="section">&nbsp;</p> -->
+        <div class="method-container">
+            
+            <div id="tapvid-controls" class="carousel slide tapvid-carousel" data-interval="false">
+                <ol class="carousel-indicators">
+                  <li data-target="#tapvid-controls" data-slide-to="0" class="active"></li>
+                  <li data-target="#tapvid-controls" data-slide-to="1"></li>
+                  <li data-target="#tapvid-controls" data-slide-to="2"></li>
+                  <li data-target="#tapvid-controls" data-slide-to="3"></li>
+                  <li data-target="#tapvid-controls" data-slide-to="4"></li>
+                </ol>
+                
+                <div class="carousel-inner">
+                
+                  <!-- libby -->
+                  <div class="carousel-item active">
+                    <video class="comp-vid" id="vid-davis-25" class="img-fluid" autoplay loop muted playsinline controls>
+                        <source id="davis-25" src="./sm/assets/tapvid-davis-show-occ/25_concatentated_10.mp4" type="video/mp4">
+                    </video>
+                  </div>
+    
+                  <!-- bike -->
+                  <div class="carousel-item">
+                    <video class="comp-vid" id="vid-davis-22" class="img-fluid" autoplay loop muted playsinline controls>
+                        <source id="davis-22" src="./sm/assets/tapvid-davis-show-occ/22_concatentated_10.mp4" type="video/mp4">
+                    </video>
+                  </div>
+    
+                  <!-- fish -->
+                  <div class="carousel-item">
+                    <video class="comp-vid" id="vid-davis-13" class="img-fluid" autoplay loop muted playsinline controls>
+                        <source id="davis-13" src="./sm/assets/tapvid-davis-show-occ/13_concatentated_10.mp4" type="video/mp4">
+                    </video>
+                  </div>
+    
+                  <!-- parkour -->
+                  <div class="carousel-item">
+                    <video class="comp-vid" id="vid-davis-9" class="img-fluid" autoplay loop muted playsinline controls>
+                        <source id="davis-9" src="./sm/assets/tapvid-davis-show-occ/9_concatentated_10.mp4" type="video/mp4">
+                    </video>
+                  </div>
+    
+                  <!-- dance -->
+                  <div class="carousel-item">
+                    <video class="comp-vid" id="vid-davis-23" class="img-fluid" autoplay loop muted playsinline controls>
+                        <source id="davis-23" src="./sm/assets/tapvid-davis-show-occ/23_concatentated_10.mp4" type="video/mp4">
+                    </video>
+                  </div>
+    
+                </div>
+    
+                <a class="carousel-control-prev tapvid-carousel-control" href="#tapvid-controls" role="button" data-slide="prev" style="width: fit-content;">
+                    <div class="slider-navigation-previous">
+                        <svg viewBox="0 0 50 80" xml:space="preserve">
+                            <polyline fill="white" stroke-width=".5em" stroke-linecap="round"
+                                stroke-linejoin="round" points="45.63,75.8 0.375,38.087 45.63,0.375 ">
+                            </polyline>
+                        </svg>
+                    </div>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next tapvid-carousel-control" href="#tapvid-controls" role="button" data-slide="next" style="width: fit-content;">
+                    <div class="slider-navigation-next">
+                        <svg viewBox="0 0 50 80" xml:space="preserve">
+                            <polyline fill="white" stroke-width=".5em" stroke-linecap="round"
+                                stroke-linejoin="round" points="0.375,0.375 45.63,38.087 0.375,75.8 ">
+                            </polyline>
+                        </svg>
+                    </div>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+
+            <br />
+
+            <p>
+                Qualitative comparisons to Co-Tracker <a href="#ref-paper-1">[1]</a>, Omnimotion <a href="#ref-paper-2">[2]</a> and TAPIR <a href="#ref-paper-3">[3]</a> on TAP-Vid-DAVIS-480 <a href="#ref-paper-5">[5]</a> (Figure 4 in the paper).
+                <br />
+                For methods that track behind occlusions, we use empty circles for points predicted as occluded.
+                Our method exhibits better association of tracks across occlusions and tracks more persistently than SOTA trackers.
+                By utilizing DINO's prior, our method tracks better on regions where optical flow is lacking, e.g. compared to Omnimotion.
+                <br />
+                <a href="./sm/index.html#comparison_tap_vid_davis_container" target="_blank">See more comparisons in the supplementary material</a>.
+            </p>
+        </div>
+
+
+
+        <!--------------------------------- Tracking performance by occlusion rate --------------------------------->
+
+        <p class="section">&nbsp;</p>
+
+        <p class="section"><b>Tracking Performance by Occlusion Rate</b></p>
+        <!-- <p class="section">&nbsp;</p> -->
+        <div class="eval-container">
+            
+            <img src="./assets/metrics-occ-rate.png" class="metrics-img" />
+
+
+            <p>
+                <br />
+                We group test videos from TAP-Vid DAVIS into three sets according to  occlusion rate (estimated using ground-truth visibility annotations),
+                and compare performance at each set to Co-Tracker <a href="#ref-paper-1">[1]</a>, Omnimotion <a href="#ref-paper-2">[2]</a>, TAPIR <a href="#ref-paper-3">[3]</a>, and PIPs++ <a href="#ref-paper-4">[4]</a>.
+                Positional accuracy and Average Jaccard are reported for each set separately.
+                While the performance of all methods decreases as the occlusion rate increases,
+                our DINO-Tracker exhibits a smaller gap and outperforms all methods with a large margin under a high occlusion rate.
+                This demonstrates the benefit of harnessing the semantic information encoded in DINO's pre-trained features. 
+                Omnimotion <a href="#ref-paper-2">[2]</a>, which solely relies on optical flow and video reconstruction, struggles in this case.
+            </p>
+        </div>
+
+
+
+        <!--------------------------------- Trajectory Feature Visualization --------------------------------->
+
+        <p class="section">&nbsp;</p>
+
+        <p class="section"><b>Trajectory Feature Visualization</b></p>
+        <!-- <p class="section">&nbsp;</p> -->
+        <div class="method-container">
+            
+            <div id="tsne-controls" class="carousel slide" data-interval="false">
+                <ol class="carousel-indicators" style="margin-bottom: 3px;">
+                  <li data-target="#tsne-controls" data-slide-to="0" class="active"></li>
+                  <li data-target="#tsne-controls" data-slide-to="1"></li>
+                  <li data-target="#tsne-controls" data-slide-to="2"></li>
+                  <li data-target="#tsne-controls" data-slide-to="3"></li>
+                </ol>
+                
+                <div class="carousel-inner">
+                
+                  <div class="carousel-item active">
+                      <div class="tsne-item-container">
+                        <a style="color: inherit; text-decoration:none" href="./sm/assets/TSNE/29.html" target="_blank">
+                          <div class="tsne-caption">Click on the plot for interactive visualization</div>
+                          <img class="tsne-track-img" src="./sm/assets/TSNE/29-tracks.png" />
+                          <img class="tsne-img" src="./sm/assets/TSNE/29.png" />
+                        </a>
+                      </div>
+                  </div>
+        
+                  <div class="carousel-item">
+                    <div class="tsne-item-container">
+                      <a style="color: inherit; text-decoration:none" href="./sm/assets/TSNE/21.html" target="_blank">
+                          <div class="tsne-caption">Click on the plot for interactive visualization</div>
+                          <img class="tsne-track-img" src="./sm/assets/TSNE/21-tracks.png" />
+                          <img class="tsne-img" src="./sm/assets/TSNE/21.png" />
+                      </a>
+                    </div>
+                  </div>
+
+                  <div class="carousel-item">
+                    <div class="tsne-item-container">
+                      <a style="color: inherit; text-decoration:none" href="./sm/assets/TSNE/13.html" target="_blank">
+                          <div class="tsne-caption">Click on the plot for interactive visualization</div>
+                          <img class="tsne-track-img" src="./sm/assets/TSNE/13-tracks.png" />
+                          <img class="tsne-img" src="./sm/assets/TSNE/13.png" />
+                      </a>
+                    </div>
+                  </div>
+        
+                  <div class="carousel-item">
+                    <div class="tsne-item-container">
+                      <a style="color: inherit; text-decoration:none" href="./sm/assets/TSNE/14.html" target="_blank">
+                          <div class="tsne-caption">Click on the plot for interactive visualization</div>
+                          <img class="tsne-track-img" src="./sm/assets/TSNE/14-tracks.png" />
+                          <img class="tsne-img" src="./sm/assets/TSNE/14.png" />
+                      </a>
+                    </div>
+                  </div>
+        
+                </div>
+        
+                <a class="carousel-control-prev tsne-carousel-control" href="#tsne-controls" role="button" data-slide="prev" style="width: fit-content;">
+                    <div class="slider-navigation-previous">
+                        <svg viewBox="0 0 50 80" xml:space="preserve">
+                            <polyline fill="white" stroke-width=".5em" stroke-linecap="round"
+                                stroke-linejoin="round" points="45.63,75.8 0.375,38.087 45.63,0.375 ">
+                            </polyline>
+                        </svg>
+                    </div>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next tsne-carousel-control" href="#tsne-controls" role="button" data-slide="next" style="width: fit-content;">
+                    <div class="slider-navigation-next">
+                        <svg viewBox="0 0 50 80" xml:space="preserve">
+                            <polyline fill="white" stroke-width=".5em" stroke-linecap="round"
+                                stroke-linejoin="round" points="0.375,0.375 45.63,38.087 0.375,75.8 ">
+                            </polyline>
+                        </svg>
+                    </div>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+
+            <br />
+
+            <p>
+                We reduce the dimensionality of foreground features extracted from all frames to 3D using t-SNE, for both raw DINO features and our optimized ones.
+                Features sampled along ground-truth trajectories are marked in color, where each color indicates a different trajectory.
+                Our refined features exhibit tight “trajectory-clusters”, allowing our method to associate matching points across distant frames and occlusion.
+                <br />
+                <!-- <span class="emph">Click on the visualizations to open an interactive view.</span> -->
+            </p>
+        </div>
+
+
+
+        <!--------------------------------- Ablations --------------------------------->
+
+        <p class="section">&nbsp;</p>
+
+        <p class="section"><b>Feature Refinement Ablation</b></p>
+
+        <div class="analysis-container">
+            
+            <video class="img-fluid an-vid" autoplay loop muted playsinline controls>
+                <source src="./sm/assets/ablation/vid_13_concatentated_10.mp4" type="video/mp4">
+            </video>
+
+
+            <p>
+                <br />
+                Comparison with two baselines: 1. raw DINOv2 <a href="#ref-paper-6">[6]</a> tracking, 2. LoRA <a href="#ref-paper-7">[7]</a> fine-tuning (Section 4.2 in the paper).
+                We show color-coded query points and their corresponding tracks (top row), 
+                and correlation maps for a single query point (marked in yellow; bottom row).
+                <br />
+                Raw DINOv2 and LoRA-tuned features are not well localized and are ambiguous in semantically similar regions (e.g. eyes of the fish).
+                On the other hand, our refinement approach using Delta-DINO CNN produces more localized heatmaps, resulting in smoother and more consistent tracks.
+                <br />
+                <a href="./sm/index.html#ablation_container" target="_blank">See more examples in the supplementary material</a>.
+            </p>
+        </div>
+        
+        <p class="section">&nbsp;</p>
+
+        <hr />
+
+        <!--------------------------------- Paper, SM, Bibtex, references --------------------------------->
+
+        <p class="section">&nbsp;</p>
+        <p class="section" id="paper"><b>Paper</b></p>
+        <table width="940" border="0">
+            <tbody>
+                <tr>
+                    <td height="100"><a href="./assets/dino_tracker.pdf" target="_blank" rel="noopener noreferrer"><img
+                                src="./sm/assets/paper_cover.jpeg" alt="" width="140" height="167"></a></td>
+                    <td width="750">
+                        <p><b>DINO-Tracker: Taming DINO for Self-Supervised Point Tracking in a Single Video</b><br>
+                            Narek Tumanyan <sup>*</sup>, Assaf Singer <sup>*</sup>, Shai Bagon, Tali Dekel.<br />
+                            (* indicates equal contribution) <br>
+                            [<a href="#" target="_blank"
+                                rel="noopener noreferrer">paper</a>]</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="section">&nbsp;</p>
+        <p class="section" id="sm"><b>Supplementary Material</b></p>
+        <table width="587" height="136" border="0">
+            <tbody>
+                <tr>
+                    <td width="180"><a href="./sm/index.html" target="_blank" rel="noopener noreferrer"><img src="./sm/assets/sm.png" alt="" height="150"></a></td>
+                    <td align="left">
+                        <p>[<a href="./sm/index.html" target="_blank">supplementary page</a>]</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <p class="section">&nbsp;</p>
+
+        <p class="section" id="bibtex"><b>Bibtex</b></p>
+        <table border="0">
+                    <tbody>
+                        <pre style=" display: block;
+        background: #eee;
+        white-space: pre;
+        -webkit-overflow-scrolling: touch;
+        max-width: 100%;
+        min-width: 100px;
+        border-radius: 20px;
+        ">
+
+            @misc{dino_tracker_2024,
+                author        = {Tumanyan, Narek and Singer, Assaf and Bagon, Shai and Dekel, Tali},
+                title         = {DINO-Tracker: Taming DINO for Self-Supervised Point Tracking in a Single Video},
+                month         = {June},
+                year          = {2024},
+                eprint        = {XXXX.XXXXX},
+                archivePrefix = {arXiv},
+                primaryClass  = {cs.CV}
+            }       
+                    </pre>
+
+
+                    </tbody>
+        </table>
+
+        <br />
+
+        <p class="section"><b>Acknowledgements</b></p>
+
+        <p>
+            We would like to thank Rafail Fridman for his insightful remarks and assistance.
+            We would also like to thank the authors of Omnimotion for providing the trained weights for TAP-Vid-DAVIS and TAP-Vid-Kinetics videos.
+            The project was supported by an ERC starting grant OmniVideo (10111768), 
+            and the Carolito Stiftung.
+            <br />
+            Dr. Bagon is a Robin Chemers Neustein AI Fellow.
+            He received funding from the Israeli Council for Higher Education (CHE) via the Weizmann Data Science Research Center and MBZUAI-WIS Joint Program for AI Research.
+        </p>
+
+        <br />
+
+        <hr />
+
+        <br />
+
+
+        <p class="section" id="paper"><b>References</b></p>
+
+        <p>
+            <a name="ref-paper-1" id="ref-paper-1">
+            [1] Nikita Karaev, Ignacio Rocco, Benjamin Graham, Natalia Neverova, Andrea Vedaldi, and Christian Rupprecht. CoTracker: It is Better to Track Together. arXiv, 2023.
+            </a>
+            <br />
+            <a name="ref-paper-2" id="ref-paper-2">
+            [2] Qianqian Wang, Yen-Yu Chang, Ruojin Cai, Zhengqi Li, Bharath Hariharan, Aleksander Holynski, Noah Snavely. Tracking Everything Everywhere All at Once. ICCV, 2023.
+            </a>
+            <br />
+            <a name="ref-paper-3" id="ref-paper-3">
+            [3] Carl Doersch, Yi Yang, Mel Vecerik, Dilara Gokay, Ankush Gupta, Yusuf Aytar, Joao Carreira, Andrew Zisserman. TAPIR: Tracking Any Point with per-frame Initialization and temporal Refinement. ICCV, 2023.
+            </a>
+            <br />
+            <a name="ref-paper-4" id="ref-paper-4">
+            [4] Yang Zheng, Adam W. Harley, Bokui Shen, Gordon Wetzstein, Leonidas J. Guibas. PointOdyssey: A Large-Scale Synthetic Dataset for Long-Term Point Tracking. ICCV, 2023.
+            </a>
+            <br />
+            <a name="ref-paper-5" id="ref-paper-5">
+            [5] Carl Doersch, Ankush Gupta, Larisa Markeeva, Adrià Recasens, Lucas Smaira, Yusuf Aytar, João Carreira, Andrew Zisserman, Yi Yang. TAP-Vid: A Benchmark for Tracking Any Point in a Video. NeurIPS, 2022.
+            </a>
+            <br />
+            <a name="ref-paper-6" id="ref-paper-6">
+            [6] Maxime Oquab, Timothée Darcet, Théo Moutakanni, Huy Vo, Marc Szafraniec, Vasil Khalidov, Pierre Fernandez, Daniel Haziza, Francisco Massa, Alaaeldin El-Nouby, Mahmoud Assran, Nicolas Ballas, Wojciech Galuba, Russell Howes, Po-Yao Huang, Shang-Wen Li, Ishan Misra, Michael Rabbat, Vasu Sharma, Gabriel Synnaeve, Hu Xu, Hervé Jegou, Julien Mairal, Patrick Labatut, Armand Joulin, Piotr Bojanowski.
+            DINOv2: Learning Robust Visual Features without Supervision. arXiv, 2023.
+            </a>
+            <br />
+            <a name="ref-paper-7" id="ref-paper-7">
+            [7] Edward J. Hu, Yelong Shen, Phillip Wallis, Zeyuan Allen-Zhu, Yuanzhi Li, Shean Wang, Lu Wang, Weizhu Chen. LoRA: Low-Rank Adaptation of Large Language Models. ICLR, 2022.
+            </a>
+        </p>
+
+
+    </div>
+
+
+
+</body>
+
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-WLX2Z5QLG8');
+ </script>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+ <script type="text/javascript">
+    $(document).ready(function () {
+
+        if (localStorage.getItem("my_app_name_here-quote-scroll") != null) {
+            $(window).scrollTop(localStorage.getItem("my_app_name_here-quote-scroll"));
+        }
+
+        $(window).on("scroll", function() {
+            localStorage.setItem("my_app_name_here-quote-scroll", $(window).scrollTop());
+        });
+
+      });
+ </script>
+
+ <script>
+    function prompt_on(prompt_element) {
+        prompt_element.classList.add("caption-active");
+    }
+
+    function prompt_off(prompt_element) {
+        prompt_element.classList.remove("caption-active");
+    }
+
+    function toggle_prompt(active_prompt_id, inactive_prompt_ids, result_id) {
+        let active_prompt = document.getElementById(active_prompt_id);
+        prompt_on(active_prompt);
+        for (let i = 0; i < inactive_prompt_ids.length; i++) {
+            let inactive_prompt = document.getElementById(inactive_prompt_ids[i]);
+            prompt_off(inactive_prompt);
+        }
+
+        let result = document.getElementById(result_id);
+        result.src = file_paths[active_prompt_id];
+    }
+ </script>
+
+ <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+ <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</html>

@@ -1,0 +1,700 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>DINO-Tracker: Taming DINO for Self-Supervised Point Tracking in a Single Video</title>
+    <link rel="shortcut icon" href="https://www.weizmann.ac.il/pages/sites/all/images/favicon.svg">
+
+    <link href="https://fonts.cdnfonts.com/css/chalkduster" rel="stylesheet">
+    <style>
+        @import url('https://fonts.cdnfonts.com/css/chalkduster');
+    </style>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="./assets/style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+	<button style="position: fixed;right: 15px;top:  50%;height: 100px;width: 140px; font-size: 20px;" type="button"><a href="#top">Back to top</a></button> 
+<div class="page-container" style="padding-top: 30px;">
+  <h1 style="font-size: 50px;" align="center">DINO-Tracker: Taming DINO for Self-Supervised Point Tracking in a Single Video</h1>
+  <h2 align="center">Supplementary Material</h2>
+	
+  <p align="center">&nbsp;</p>
+	<a href="#top"></a>
+  <ul>
+	<li><a href="#our_results_container">Our Results</a></li>
+	<li><a href="#comparison_tap_vid_davis_container">TAP-Vid-DAVIS Comparisons</a></li>
+	<li><a href="#comparison_badja_container">BADJA Comparisons</a></li>
+	<li><a href="#comparison_tap_vid_kinetics_container">TAP-Vid-Kinetics Comparisons</a></li>
+	<!-- <li><a href="./tapvid-davis-ours.html" target="_blank">Extensive quantitative evaluation on TAP-Vid-DAVIS</a></li> -->
+	<li><a href="#feature_container">Trajectory Features Visualization</a></li>
+	<li><a href="#ablation_container">Ablations</a></li>
+	<li><a href="#limitation_container">Limitations</a></li>
+  </ul>
+  <p><br><span class="emph">We recommend watching videos in full screen. Use left-right arrows to browse through the videos in each section.</span></p>
+
+
+  <!------------------ BEGIN SECTION ------------------>
+
+  <p>&nbsp;</p>
+  <hr>
+	
+  <h1 id="our_results_container" align="left"><a name="image-results" id="image-results"></a>Our Results</h1>
+
+  <br />
+
+  <p align="left">
+    Motion trails produced by DINO-Tracker. Our method tracks the points accurately and smoothly in time, and is robust to long, repeated occlusions.
+  </p>
+
+  <br/>
+  
+  <!-- rainbow visualizations go here ... -->
+  <div class="slide-continer">
+        <div id="trail-controls" class="carousel slide" data-ride="carousel" data-interval="100000000">
+            <ol class="carousel-indicators">
+              <li data-target="#trail-controls" data-slide-to="0" class="active"></li>
+              <li data-target="#trail-controls" data-slide-to="1"></li>
+              <li data-target="#trail-controls" data-slide-to="2"></li>
+            </ol>
+
+            <div class="carousel-inner">
+
+              <div class="carousel-item active">
+                <div>
+                  <video class="img-fluid trail-vid" autoplay loop muted playsinline controls>
+                      <source src="./assets/rainbow-trails/kangaroo-2.mp4" type="video/mp4">
+                  </video>
+
+                  <video class="img-fluid trail-vid" autoplay loop muted playsinline controls>
+                      <source src="./assets/rainbow-trails/tiger-2.mp4" type="video/mp4">
+                  </video>
+
+                  <br />
+
+                  <video class="img-fluid trail-vid" autoplay loop muted playsinline controls>
+                      <source src="./assets/rainbow-trails/swing.mp4" type="video/mp4">
+                  </video>
+
+                  <video class="img-fluid trail-vid" autoplay loop muted playsinline controls>
+                      <source src="./assets/rainbow-trails/motorbike.mp4" type="video/mp4">
+                  </video>
+                </div>
+              </div>
+              
+
+              <div class="carousel-item">
+
+                <video class="img-fluid trail-vid" autoplay loop muted playsinline controls>
+                    <source src="./assets/rainbow-trails/flamingo.mp4" type="video/mp4">
+                </video>
+
+                <video class="img-fluid trail-vid" autoplay loop muted playsinline controls>
+                    <source src="./assets/rainbow-trails/tennis.mp4" type="video/mp4">
+                </video>
+
+                <br />
+
+                <video class="img-fluid trail-vid" autoplay loop muted playsinline controls>
+                    <source src="./assets/rainbow-trails/horse-jump-2.mp4" type="video/mp4">
+                </video>
+
+                <video class="img-fluid trail-vid" autoplay loop muted playsinline controls>
+                    <source src="./assets/rainbow-trails/kangaroo-1.mp4" type="video/mp4">
+                </video>
+
+              </div>
+
+
+
+              <div class="carousel-item">
+
+                <video class="img-fluid trail-vid" autoplay loop muted playsinline controls>
+                    <source src="./assets/rainbow-trails/soapbox.mp4" type="video/mp4">
+                </video>
+
+                <video class="img-fluid trail-vid" autoplay loop muted playsinline controls>
+                    <source src="./assets/rainbow-trails/car.mp4" type="video/mp4">
+                </video>
+
+                <br />
+
+                <video class="img-fluid trail-vid" autoplay loop muted playsinline controls>
+                    <source src="./assets/rainbow-trails/hike.mp4" type="video/mp4">
+                </video>
+
+                <video class="img-fluid trail-vid" autoplay loop muted playsinline controls>
+                    <source src="./assets/rainbow-trails/car-turn.mp4" type="video/mp4">
+                </video>
+
+              </div>
+
+            </div>
+
+            <a class="carousel-control-prev crsl-ctrl crsl-ctrl-left" href="#trail-controls" role="button" data-slide="prev">
+              <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="flip-v bi bi-play-circle-fill" viewBox="0 0 16 16">
+                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814z"/>
+              </svg>
+
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next crsl-ctrl crsl-ctrl-right" href="#trail-controls" role="button" data-slide="next">
+              <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-play-circle-fill" viewBox="0 0 16 16">
+                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814z"/>
+              </svg>
+              <span class="sr-only">Next</span>
+            </a>
+        </div>
+  </div>
+
+  <!------------------ END SECTION ------------------>
+
+
+
+  <!------------------ BEGIN SECTION ------------------>
+
+  <p>&nbsp;</p>
+  <hr>
+	
+  <h1 id="comparison_tap_vid_davis_container" align="left"><a name="image-results" id="image-results"></a>TAP-Vid-DAVIS Comparisons</h1>
+
+  <br />
+
+  <p align="left">
+    Qualitative comparisons to Co-Tracker <a href="#ref-paper-1">[1]</a>, Omnimotion <a href="#ref-paper-2">[2]</a> and TAPIR <a href="#ref-paper-3">[3]</a> on TAP-Vid-DAVIS-480 <a href="#ref-paper-5">[5]</a> (Figure 4 in the paper).
+    <br />
+    For methods that track behind occlusions, we use empty circles for points predicted as occluded.
+    Our method exhibits better association of tracks across occlusions and tracks more persistently than SOTA trackers.
+    By utilizing DINO's prior, our method tracks better on regions where optical flow is lacking, e.g. compared to Omnimotion.
+  </p>
+
+  <br/>
+  
+  <div class="slide-continer tapvid-davis-comp-container">
+        <div id="tapvid-controls" class="carousel slide" data-ride="carousel" data-interval="100000000">
+            <ol class="carousel-indicators">
+              <li data-target="#tapvid-controls" data-slide-to="0" class="active"></li>
+              <li data-target="#tapvid-controls" data-slide-to="1"></li>
+              <li data-target="#tapvid-controls" data-slide-to="2"></li>
+              <li data-target="#tapvid-controls" data-slide-to="3"></li>
+              <li data-target="#tapvid-controls" data-slide-to="4"></li>
+              <li data-target="#tapvid-controls" data-slide-to="5"></li>
+              <li data-target="#tapvid-controls" data-slide-to="6"></li>
+              <li data-target="#tapvid-controls" data-slide-to="7"></li>
+              <li data-target="#tapvid-controls" data-slide-to="8"></li>
+              <li data-target="#tapvid-controls" data-slide-to="9"></li>
+            </ol>
+            
+            <div class="carousel-inner">
+            
+              <!-- libby -->
+              <div class="carousel-item active">
+                <video class="comp-vid" id="vid-davis-25" class="img-fluid" autoplay loop muted playsinline controls>
+                    <source id="davis-25" src="./assets/tapvid-davis-show-occ/25_concatentated_10.mp4" type="video/mp4">
+                </video>
+              </div>
+
+              <!-- bike -->
+              <div class="carousel-item">
+                <video class="comp-vid" id="vid-davis-22" class="img-fluid" autoplay loop muted playsinline controls>
+                    <source id="davis-22" src="./assets/tapvid-davis-show-occ/22_concatentated_10.mp4" type="video/mp4">
+                </video>
+              </div>
+
+              <!-- parkour -->
+              <div class="carousel-item">
+                <video class="comp-vid" id="vid-davis-9" class="img-fluid" autoplay loop muted playsinline controls>
+                    <source id="davis-9" src="./assets/tapvid-davis-show-occ/9_concatentated_10.mp4" type="video/mp4">
+                </video>
+              </div>
+
+              <!-- dance -->
+              <div class="carousel-item">
+                <video class="comp-vid" id="vid-davis-23" class="img-fluid" autoplay loop muted playsinline controls>
+                    <source id="davis-23" src="./assets/tapvid-davis-show-occ/23_concatentated_10.mp4" type="video/mp4">
+                </video>
+              </div>
+
+              <!-- fish -->
+              <div class="carousel-item">
+                <video class="comp-vid" id="vid-davis-13" class="img-fluid" autoplay loop muted playsinline controls>
+                    <source id="davis-13" src="./assets/tapvid-davis-show-occ/13_concatentated_10.mp4" type="video/mp4">
+                </video>
+              </div>
+
+              <!-- india -->
+              <div class="carousel-item">
+                <video class="comp-vid" id="vid-davis-10" class="img-fluid" autoplay loop muted playsinline controls>
+                    <source id="davis-10" src="./assets/tapvid-davis-show-occ/10_concatentated_10.mp4" type="video/mp4">
+                </video>
+              </div>
+
+              <!-- paraplane -->
+              <div class="carousel-item">
+                <video class="comp-vid" id="vid-davis-14" class="img-fluid" autoplay loop muted playsinline controls>
+                    <source id="davis-14" src="./assets/tapvid-davis-show-occ/14_concatentated_10.mp4" type="video/mp4">
+                </video>
+              </div>
+
+              <!-- drift -->
+              <div class="carousel-item">
+                <video class="comp-vid" id="vid-davis-4" class="img-fluid" autoplay loop muted playsinline controls>
+                    <source id="davis-4" src="./assets/tapvid-davis-show-occ/4_concatentated_10.mp4" type="video/mp4">
+                </video>
+              </div>
+
+              <!-- goat -->
+              <div class="carousel-item">
+                <video class="comp-vid" id="vid-davis-0" class="img-fluid" autoplay loop muted playsinline controls>
+                    <source id="davis-0" src="./assets/tapvid-davis-show-occ/0_concatentated_10.mp4" type="video/mp4">
+                </video>
+              </div>
+
+              <!-- bike (18) -->
+              <div class="carousel-item">
+                <video class="comp-vid" id="vid-davis-18" class="img-fluid" autoplay loop muted playsinline controls>
+                    <source id="davis-18" src="./assets/tapvid-davis-show-occ/18_concatentated_10.mp4" type="video/mp4">
+                </video>
+              </div>
+
+            </div>
+
+            <a class="carousel-control-prev crsl-ctrl crsl-ctrl-left" href="#tapvid-controls" role="button" data-slide="prev">
+              <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="flip-v bi bi-play-circle-fill" viewBox="0 0 16 16">
+                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814z"/>
+              </svg>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next crsl-ctrl crsl-ctrl-right" href="#tapvid-controls" role="button" data-slide="next">
+              <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-play-circle-fill" viewBox="0 0 16 16">
+                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814z"/>
+              </svg>
+              <span class="sr-only">Next</span>
+            </a>
+        </div>
+
+        <br />
+
+  </div>
+
+  <!------------------ END SECTION ------------------>
+
+
+
+  <!------------------ BEGIN SECTION ------------------>
+
+  <p>&nbsp;</p>
+  <hr>
+	
+  <h1 id="comparison_badja_container" align="left"><a name="image-results" id="image-results"></a>BADJA Comparisons</h1>
+
+  <br />
+
+  <p align="left">
+    <!-- We demonstrate comparison on BADJA <a href="#ref-paper-6">[6]</a> benchmark to SOTA trackers (Figure 5). We display tracked points (color-coded) and tracking errors (red lines) on frames where ground-truth annotations are available (1 in every ~3-5 frames).
+    Our method tracks more persistently across external and self-occlucions. However, all methods are often limited in tracking swapping legs. -->
+
+    Comparisons to Co-Tracker <a href="#ref-paper-1">[1]</a>, Omnimotion <a href="#ref-paper-2">[2]</a> and TAPIR <a href="#ref-paper-3">[3]</a> on BADJA <a href="#ref-paper-6">[6]</a> (Figure 5 in the paper).
+    Tracked points are color-coded, while <i>errors</i> w.r.t. ground-truth are shown in red lines.
+    Only frames where ground-truth annotations are shown (every 3-5 frames). Our method tracks better across occlusions and self-occlusions.
+    Despite our noticeable improvement, correctly tracking the limbs through self-occlusion remains challenging for all methods.
+  </p>
+
+  <br/>
+  
+  <div class="slide-continer badja-comp-container">
+        <div id="badja-controls" class="carousel slide" data-ride="carousel" data-interval="100000000">
+            <ol class="carousel-indicators">
+              <li data-target="#badja-controls" data-slide-to="0" class="active"></li>
+              <li data-target="#badja-controls" data-slide-to="1"></li>
+              <li data-target="#badja-controls" data-slide-to="2"></li>
+              <li data-target="#badja-controls" data-slide-to="3"></li>
+              <li data-target="#badja-controls" data-slide-to="4"></li>
+            </ol>
+
+            <div class="carousel-inner">
+            
+              <!-- horse-jump-low -->
+              <div class="carousel-item active">
+                <video class="comp-vid" class="img-fluid" autoplay loop muted playsinline controls>
+                    <source src="./assets/BADJA_pred_vs_gt/6_concatentated_2.mp4" type="video/mp4">
+                </video>
+              </div>
+
+              <!-- cow -->
+              <div class="carousel-item">
+                <video class="comp-vid" class="img-fluid" autoplay loop muted playsinline controls>
+                    <source src="./assets/BADJA_pred_vs_gt/2_concatentated_2.mp4" type="video/mp4">
+                </video>
+              </div>
+
+              <!-- camel -->
+              <div class="carousel-item">
+                <video class="comp-vid" class="img-fluid" autoplay loop muted playsinline controls>
+                    <source src="./assets/BADJA_pred_vs_gt/1_concatentated_2.mp4" type="video/mp4">
+                </video>
+              </div>
+
+              <!-- white-dog -->
+              <div class="carousel-item">
+                <video class="comp-vid" class="img-fluid" autoplay loop muted playsinline controls>
+                    <source src="./assets/BADJA_pred_vs_gt/4_concatentated_2.mp4" type="video/mp4">
+                </video>
+              </div>
+
+              <!-- bear -->
+              <div class="carousel-item">
+                <video class="comp-vid" class="img-fluid" autoplay loop muted playsinline controls>
+                    <source src="./assets/BADJA_pred_vs_gt/0_concatentated_2.mp4" type="video/mp4">
+                </video>
+              </div>
+              
+
+            </div>
+
+            <a class="carousel-control-prev crsl-ctrl crsl-ctrl-left" href="#badja-controls" role="button" data-slide="prev">
+              <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="flip-v bi bi-play-circle-fill" viewBox="0 0 16 16">
+                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814z"/>
+              </svg>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next crsl-ctrl crsl-ctrl-right" href="#badja-controls" role="button" data-slide="next">
+              <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-play-circle-fill" viewBox="0 0 16 16">
+                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814z"/>
+              </svg>
+              <span class="sr-only">Next</span>
+            </a>
+        </div>
+  </div>
+
+  <!------------------ END SECTION ------------------>
+
+
+  <!------------------ BEGIN SECTION ------------------>
+
+  <p>&nbsp;</p>
+  <hr>
+	
+  <h1 id="comparison_tap_vid_kinetics_container" align="left"><a name="image-results" id="image-results"></a>TAP-Vid-Kinetics Comparisons</h1>
+
+  <br />
+
+  <p align="left">
+    We additionally compare to Co-Tracker <a href="#ref-paper-1">[1]</a>, TAPIR <a href="#ref-paper-3">[3]</a> and PIPs++ <a href="#ref-paper-4">[4]</a> on TAP-Vid-Kinetics-480 <a href="#ref-paper-5">[5]</a>, using same visualization as in BADJA.
+    (Omnimotion weights are not available in Kinetics-480). Ground-truth visible points predicted as occluded are marked with empty circles, ground-truth occluded points predicted as visible are marked with cross.
+  </p>
+
+  <br/>
+  
+  <div class="slide-continer tapvid-davis-comp-container">
+        <div id="kinetics-controls" class="carousel slide" data-ride="carousel" data-interval="100000000">
+            <ol class="carousel-indicators">
+              <li data-target="#kinetics-controls" data-slide-to="0" class="active"></li>
+              <li data-target="#kinetics-controls" data-slide-to="1"></li>
+              <li data-target="#kinetics-controls" data-slide-to="2"></li>
+              <li data-target="#kinetics-controls" data-slide-to="3"></li>
+            </ol>
+            
+            <div class="carousel-inner">
+            
+              <div class="carousel-item active">
+                <video class="comp-vid" class="img-fluid" autoplay loop muted playsinline controls>
+                    <source src="./assets/kinetics_480_pred_vs_gt/2_concatentated_10.mp4" type="video/mp4">
+                </video>
+              </div>
+
+              <div class="carousel-item">
+                <video class="comp-vid" class="img-fluid" autoplay loop muted playsinline controls>
+                    <source src="./assets/kinetics_480_pred_vs_gt/1_concatentated_10.mp4" type="video/mp4">
+                </video>
+              </div>
+
+              <div class="carousel-item">
+                <video class="comp-vid" class="img-fluid" autoplay loop muted playsinline controls>
+                    <source src="./assets/kinetics_480_pred_vs_gt/0_concatentated_10.mp4" type="video/mp4">
+                </video>
+              </div>
+
+              <div class="carousel-item">
+                <video class="comp-vid" class="img-fluid" autoplay loop muted playsinline controls>
+                    <source src="./assets/kinetics_480_pred_vs_gt/4_concatentated_10.mp4" type="video/mp4">
+                </video>
+              </div>
+
+            </div>
+
+            <a class="carousel-control-prev crsl-ctrl crsl-ctrl-left" href="#kinetics-controls" role="button" data-slide="prev">
+              <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="flip-v bi bi-play-circle-fill" viewBox="0 0 16 16">
+                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814z"/>
+              </svg>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next crsl-ctrl crsl-ctrl-right" href="#kinetics-controls" role="button" data-slide="next">
+              <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-play-circle-fill" viewBox="0 0 16 16">
+                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814z"/>
+              </svg>
+              <span class="sr-only">Next</span>
+            </a>
+        </div>
+
+        <br />
+
+  </div>
+
+  <!------------------ END SECTION ------------------>
+
+
+
+  <!------------------ BEGIN SECTION ------------------>
+
+  <p>&nbsp;</p>
+  <hr>
+	
+  <h1 id="feature_container" align="left"><a name="image-results" id="image-results"></a>Trajectory Features Visualization</h1>
+
+  <br />
+
+  <p align="left">
+    We reduce the dimensionality of foreground features extracted from all frames to 3D using t-SNE, for both raw DINO features and our optimized ones.
+    Features sampled along ground-truth trajectories are marked in color, where each color indicates a different trajectory.
+    Our refined features exhibit tight “trajectory-clusters”, allowing our method to associate matching points across distant frames and occlusion.
+    <br />
+    <!-- <span class="emph">Click on the visualizations to open an interactive view.</span> -->
+  </p>
+
+  <br/>
+
+  <div class="slide-continer tsne-container">
+    <div id="tsne-controls" class="carousel slide" data-ride="carousel" data-interval="100000000">
+        <ol class="carousel-indicators">
+          <li data-target="#tsne-controls" data-slide-to="0" class="active"></li>
+          <li data-target="#tsne-controls" data-slide-to="1"></li>
+          <li data-target="#tsne-controls" data-slide-to="2"></li>
+          <li data-target="#tsne-controls" data-slide-to="3"></li>
+        </ol>
+        
+        <div class="carousel-inner tsne-carousel-inner">
+        
+          <div class="carousel-item active">
+              <div class="tsne-item-container">
+                <a style="color: inherit; text-decoration:none" href="./assets/TSNE/29.html" target="_blank">
+                  <div class="tsne-caption">Click on the plot for interactive visualization</div>
+                  <img class="tsne-track-img" src="./assets/TSNE/29-tracks.png" />
+                  <img class="tsne-img" src="./assets/TSNE/29.png" />
+                </a>
+              </div>
+          </div>
+
+          <div class="carousel-item">
+            <div class="tsne-item-container">
+              <a style="color: inherit; text-decoration:none" href="./assets/TSNE/21.html" target="_blank">
+                <div class="tsne-caption">Click on the plot for interactive visualization</div>
+                  <img class="tsne-track-img" src="./assets/TSNE/21-tracks.png" />
+                  <img class="tsne-img" src="./assets/TSNE/21.png" />
+              </a>
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <div class="tsne-item-container">
+              <a style="color: inherit; text-decoration:none" href="./assets/TSNE/13.html" target="_blank">
+                <div class="tsne-caption">Click on the plot for interactive visualization</div>
+                  <img class="tsne-track-img" src="./assets/TSNE/13-tracks.png" />
+                  <img class="tsne-img" src="./assets/TSNE/13.png" />
+              </a>
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <div class="tsne-item-container">
+              <a style="color: inherit; text-decoration:none" href="./assets/TSNE/14.html" target="_blank">
+                <div class="tsne-caption">Click on the plot for interactive visualization</div>
+                  <img class="tsne-track-img" src="./assets/TSNE/14-tracks.png" />
+                  <img class="tsne-img" src="./assets/TSNE/14.png" />
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+        <a class="carousel-control-prev crsl-ctrl crsl-ctrl-left" href="#tsne-controls" role="button" data-slide="prev">
+          <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="flip-v bi bi-play-circle-fill" viewBox="0 0 16 16">
+            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814z"/>
+          </svg>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next crsl-ctrl crsl-ctrl-right" href="#tsne-controls" role="button" data-slide="next">
+          <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-play-circle-fill" viewBox="0 0 16 16">
+            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814z"/>
+          </svg>
+          <span class="sr-only">Next</span>
+        </a>
+    </div>
+
+</div>
+  
+  <!-- <div class="slide-continer tsne-container">
+    <div class="tsne-item-container">
+      <a style="color: inherit; text-decoration:none" href="./assets/TSNE/29.html" target="_blank">
+        <img class="tsne-track-img" src="./assets/TSNE/29-tracks.png" />
+        <img class="tsne-img" src="./assets/TSNE/29.png" />
+      </a>
+    </div>
+    <div class="tsne-item-container">
+      <a style="color: inherit; text-decoration:none" href="./assets/TSNE/21.html" target="_blank">
+          <img class="tsne-track-img" src="./assets/TSNE/21-tracks.png" />
+          <img class="tsne-img" src="./assets/TSNE/21.png" />
+      </a>
+    </div> -->
+
+  <!-- <br />
+
+    <div class="tsne-item-container">
+      <a style="color: inherit; text-decoration:none" href="./assets/TSNE/13.html" target="_blank">
+          <img class="tsne-track-img" src="./assets/TSNE/13-tracks.png" />
+          <img class="tsne-img" src="./assets/TSNE/13.png" />
+      </a>
+    </div>
+    <div class="tsne-item-container">
+      <a style="color: inherit; text-decoration:none" href="./assets/TSNE/14.html" target="_blank">
+          <img class="tsne-track-img" src="./assets/TSNE/14-tracks.png" />
+          <img class="tsne-img" src="./assets/TSNE/14.png" />
+      </a>
+    </div> -->
+
+  <!------------------ END SECTION ------------------>
+
+
+
+  <!------------------ BEGIN SECTION ------------------>
+
+  <p>&nbsp;</p>
+  <hr>
+	
+  <h1 id="ablation_container" align="left"><a name="image-results" id="image-results"></a>Ablations</h1>
+
+  <br />
+
+  <p align="left">
+    Comparison with two baselines: 1. raw DINOv2 <a href="#ref-paper-7">[7]</a> tracking, 2. LoRA <a href="#ref-paper-8">[8]</a> fine-tuning (Section 4.2 in the paper).
+    In each example, we show: color-coded query points and their corresponding tracks (top row), 
+    and correlation maps for a single query point (marked in yellow; bottom row).
+    <br />
+    Raw DINOv2 and LoRA-tuned features are not well localized and are ambiguous in semantically similar regions (e.g. eyes of the fish).
+    On the other hand, our refinement approach using Delta-DINO CNN produces more localized heatmaps, resulting in smoother and more consistent tracks.
+  </p>
+
+  <br/>
+  
+  <div class="slide-continer ablation-container">
+    <video class="img-fluid" autoplay loop muted playsinline controls>
+        <source src="./assets/ablation/vid_13_concatentated_10.mp4" type="video/mp4">
+    </video>
+    <br />
+    <br />
+    <video class="img-fluid" autoplay loop muted playsinline controls>
+        <source src="./assets/ablation/vid_14_concatentated_10.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <!------------------ END SECTION ------------------>
+
+
+
+  <!------------------ BEGIN SECTION ------------------>
+
+  <p>&nbsp;</p>
+  <hr>
+	
+  <h1 id="limitation_container" align="left"><a name="image-results" id="image-results"></a>Limitations</h1>
+
+  <br />
+
+  <p align="left">
+    We observed that in challenging videos for which there is almost no optical flow supervision and there are multiple semantically-similar objects,
+    trajectories may jump from one object to another (points on the first deer jump to the second deer).
+    This is because raw DINO is mostly dominated by semantic information.
+    <!-- Furthermore, while our method excels in tracking <i>across</i> long-term occlusions, it does not model trajectories <i>behind</i> occlusions. -->
+  </p>
+
+  <br/>
+  
+  <div class="slide-continer limitation-container">
+    <video style="display: inline-block; height: 480px" class="img-fluid" autoplay loop muted playsinline controls>
+        <source src="./assets/limitations/dear-tracks_video_no_trace_fps_10.mp4" type="video/mp4">
+    </video>
+
+    <!-- <video style="display: inline-block;" class="img-fluid" autoplay loop muted playsinline controls>
+        <source src="./assets/limitations/dog-tracks_video_no_trace_erosion_kernel_10_fps_10.mp4" type="video/mp4">
+    </video> -->
+  </div>
+
+  <!------------------ END SECTION ------------------>
+
+
+
+  <br />
+  <br />
+
+  <hr>
+
+  <p>&nbsp;</p>
+
+  <h1>References</h1>
+  <br />
+
+  <p>
+    <a name="ref-paper-1" id="ref-paper-1">
+      [1] Nikita Karaev, Ignacio Rocco, Benjamin Graham, Natalia Neverova, Andrea Vedaldi, and Christian Rupprecht. CoTracker: It is Better to Track Together. arXiv, 2023.
+    </a>
+    <br />
+    <a name="ref-paper-2" id="ref-paper-2">
+      [2] Qianqian Wang, Yen-Yu Chang, Ruojin Cai, Zhengqi Li, Bharath Hariharan, Aleksander Holynski, Noah Snavely. Tracking Everything Everywhere All at Once. ICCV, 2023.
+    </a>
+    <br />
+    <a name="ref-paper-3" id="ref-paper-3">
+      [3] Carl Doersch, Yi Yang, Mel Vecerik, Dilara Gokay, Ankush Gupta, Yusuf Aytar, Joao Carreira, Andrew Zisserman. TAPIR: Tracking Any Point with per-frame Initialization and temporal Refinement. ICCV, 2023.
+    </a>
+    <br />
+    <a name="ref-paper-4" id="ref-paper-4">
+      [4] Yang Zheng, Adam W. Harley, Bokui Shen, Gordon Wetzstein, Leonidas J. Guibas. PointOdyssey: A Large-Scale Synthetic Dataset for Long-Term Point Tracking. ICCV, 2023.
+    </a>
+    <br />
+    <a name="ref-paper-5" id="ref-paper-5">
+      [5] Carl Doersch, Ankush Gupta, Larisa Markeeva, Adrià Recasens, Lucas Smaira, Yusuf Aytar, João Carreira, Andrew Zisserman, Yi Yang. TAP-Vid: A Benchmark for Tracking Any Point in a Video. NeurIPS, 2022.
+    </a>
+    <br />
+    <a name="ref-paper-6" id="ref-paper-6">
+      [6] Benjamin Biggs, Thomas Roddick, Andrew Fitzgibbon, Roberto Cipolla. Creatures great and SMAL: Recovering the shape and motion of animals from video. ACCV, 2018.
+    </a>
+    <br />
+    <a name="ref-paper-7" id="ref-paper-7">
+      [7] Maxime Oquab, Timothée Darcet, Théo Moutakanni, Huy Vo, Marc Szafraniec, Vasil Khalidov, Pierre Fernandez, Daniel Haziza, Francisco Massa, Alaaeldin El-Nouby, Mahmoud Assran, Nicolas Ballas, Wojciech Galuba, Russell Howes, Po-Yao Huang, Shang-Wen Li, Ishan Misra, Michael Rabbat, Vasu Sharma, Gabriel Synnaeve, Hu Xu, Hervé Jegou, Julien Mairal, Patrick Labatut, Armand Joulin, Piotr Bojanowski.
+      DINOv2: Learning Robust Visual Features without Supervision. arXiv, 2023.
+    </a>
+    <br />
+    <a name="ref-paper-8" id="ref-paper-8">
+      [8] Edward J. Hu, Yelong Shen, Phillip Wallis, Zeyuan Allen-Zhu, Yuanzhi Li, Shean Wang, Lu Wang, Weizhu Chen. LoRA: Low-Rank Adaptation of Large Language Models. ICLR, 2022.
+    </a>
+  </p>
+  
+
+<!-- </div> -->
+
+</div>
+
+
+</body>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</html>
