@@ -33,6 +33,7 @@
 	<!-- <li><a href="./tapvid-davis-ours.html" target="_blank">Extensive quantitative evaluation on TAP-Vid-DAVIS</a></li> -->
 	<li><a href="#feature_container">Trajectory Features Visualization</a></li>
 	<li><a href="#ablation_container">Ablations</a></li>
+	<li><a href="#tracking_during_occlusions_container">Tracking During Occlusions</a></li>
 	<li><a href="#limitation_container">Limitations</a></li>
   </ul>
   <p><br><span class="emph">We recommend watching videos in full screen. Use left-right arrows to browse through the videos in each section.</span></p>
@@ -603,6 +604,92 @@
 
   <!------------------ END SECTION ------------------>
 
+
+  <!------------------ BEGIN SECTION ------------------>
+
+  <p>&nbsp;</p>
+  <hr>
+	
+  <h1 id="tracking_during_occlusions_container" align="left"><a name="image-results" id="image-results"></a>Tracking During Occlusions</h1>
+
+  <br />
+
+  <p align="left">
+    While our method excels in associating points <i>across</i> long-term occlusions, we do not model
+    trajectories behind occluders. However, due to DINO-Tracker's ability of tracking across occlusions,
+    a simple interpolation technique can give plausible tracks during occlusions.
+    Videos below demonstrate a proof-of-concept of such approach, where we use simple cubic spline to interpolate between visible tracks before and after occlusions
+    (points predicted as occluded are marked in empty circles).
+    Extending this approach to a more advanced technique is an intriguing future direction.
+  </p>
+
+  <br/>
+  
+  <div class="slide-continer tapvid-davis-comp-container">
+        <div id="spline-controls" class="carousel slide" data-ride="carousel" data-interval="100000000">
+            <ol class="carousel-indicators">
+              <li data-target="#spline-controls" data-slide-to="0" class="active"></li>
+              <li data-target="#spline-controls" data-slide-to="1"></li>
+              <li data-target="#spline-controls" data-slide-to="2"></li>
+              <li data-target="#spline-controls" data-slide-to="3"></li>
+            </ol>
+            
+            <div class="carousel-inner">
+
+              <!-- india -->
+              <div class="carousel-item active">
+                <video class="interp-vid" id="vid-spline-india" class="img-fluid" autoplay loop muted playsinline controls>
+                    <source id="spline-india" src="./assets/track-behind-occ/behind-occ-india.mp4" type="video/mp4">
+                </video>
+              </div>
+
+
+              <!-- bike -->
+              <div class="carousel-item">
+                <video class="interp-vid" id="vid-spline-bike" class="img-fluid" autoplay loop muted playsinline controls>
+                    <source id="spline-bike" src="./assets/track-behind-occ/behind-occ-bike.mp4" type="video/mp4">
+                </video>
+              </div>
+
+            
+              <!-- swing -->
+              <div class="carousel-item">
+                <video class="interp-vid" id="vid-spline-swing" class="img-fluid" autoplay loop muted playsinline controls>
+                    <source id="spline-swing" src="./assets/track-behind-occ/behind-occ-swing.mp4" type="video/mp4">
+                </video>
+              </div>
+
+
+              <!-- kangaroo -->
+              <div class="carousel-item">
+                <video class="interp-vid" id="vid-spline-kangaroo" class="img-fluid" autoplay loop muted playsinline controls>
+                    <source id="spline-kangaroo" src="./assets/track-behind-occ/behind-occ-kangaroo.mp4" type="video/mp4">
+                </video>
+              </div>
+
+
+            </div>
+
+
+            <a class="carousel-control-prev crsl-ctrl crsl-ctrl-left" href="#spline-controls" role="button" data-slide="prev" style="margin-left: 5%;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="flip-v bi bi-play-circle-fill" viewBox="0 0 16 16">
+                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814z"/>
+              </svg>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next crsl-ctrl crsl-ctrl-right" href="#spline-controls" role="button" data-slide="next" style="margin-right: 5%;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-play-circle-fill" viewBox="0 0 16 16">
+                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814z"/>
+              </svg>
+              <span class="sr-only">Next</span>
+            </a>
+        </div>
+
+        <br />
+
+  </div>
+
+  <!------------------ END SECTION ------------------>
 
 
   <!------------------ BEGIN SECTION ------------------>
